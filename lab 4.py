@@ -6,53 +6,41 @@ if passw == conf_passw:
 else:
     print("ne priniat")
 'task 4.2'
-def proverka_nomera_mesta(seat_num):
-    if seat_num < 1 or seat_num > 54:
-        return "neverno, vsego 54 mesta v vagone"
-    if seat_num <= 36:
-        if seat_num % 2 == 1:
-            return "nijn mesto , kype"
+seat_number = int(input("vod nomera mesta: "))
+if 1 <= seat_number <= 36: #plac
+    if seat_number % 2 == 0:
+        if seat_number <= 18:
+            print("nijn mest")
         else:
-            return "verh mesto , kype"
+            print("vehn mest")
     else:
-        if seat_num % 2 == 1:
-            return "nijn mesto , bokovoe"
+        if seat_number <= 18:
+            print("verhn mest")
         else:
-            return "verh mesto , bokovoe"
-seat_num = int(input("vash nomer: "))
-seat_t = proverka_nomera_mesta(seat_num)
-print(seat_t)
-'task 4.3'
-def visokosnii_li_god(year):
-    if (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0):
-        return True
-    else:
-        return False
-year = int(input("vvedite god: "))
-if visokosnii_li_god(year):
-    print(f"god {year} - visokos")
+            print("nijn mest")
 else:
-    print("ne visokos")
-'task 4.4'
-def smeshanie_cvetov(color1,color2):
-    color_mix = {
-        ("krasn", "sin"): "fiol",
-        ("krasn", "jelt"): "oranj",
-        ("sin", "jelt"): "zelen",
-    }
-    colors = (color1, color2)
-    if colors in color_mix:
-        return color_mix[colors]
-    elif (color2, color1) in color_mix:
-        return color_mix[(color2, color1)]
+    if 37 <= seat_number <= 54: #kype
+        if seat_number % 2 == 0:
+            print("bok mest")
+        else:
+            print("nijn mest")
     else:
-        return None
-color1 = input("vved perv cvet: ").strip().lower()
-color2 = input("vved vtor cvet: ").strip().lower()
-valid_colors = ["krasn", "sin", "jelt"]
-if color1 in valid_colors and color2 in valid_colors:
-    sec_color = smeshanie_cvetov(color1, color2)
-    print(f" {color1} + {color2} = {sec_color}")
+        print("neverno")
+'task 4.3'
+year = int(input("god: "))
+if (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0):
+    print(f"godd {year} - visok")
+else:
+    print("ne visok")
+'task 4.4'
+color1 = input("perv cvet(krasn , sin , jelt): ").strip().lower()
+color2 = input("vtor cvet (krasn , sin , jelt): ").strip().lower()
+if (color1 == "krasn" and color2 == "sin") or (color1 == "sin" and color2 == "krasn"):
+    print("fiolet")
+elif (color1 == "krasn" and color2 == "jelt") or (color1 == "jelt" and color2 == "krasn"):
+    print("oranj")
+elif (color1 == "sin" and color2 == "jelt") or (color1 == "jelt" and color2 == "sin"):
+    print("zelen")
 else:
     print("oshibka")
 
